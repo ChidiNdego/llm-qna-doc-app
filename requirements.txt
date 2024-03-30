@@ -6,3 +6,5 @@ pypdf
 streamlit
 chromadb
 tiktoken
+python-dotenv
+streamlit-chat
