@@ -31,11 +31,28 @@ RUN adduser \
     appuser
 
 # Install gcc and other dependencies required for building certain Python packages
+# Install gcc, make, wget and other dependencies required for building certain Python packages
 RUN apt-get update && apt-get install -y \
     gcc \
     libc-dev \
-    libsqlite3-dev \
+    make \
+    wget \
     && rm -rf /var/lib/apt/lists/*
+
+
+
+# Download and compile SQLite from source
+RUN wget https://www.sqlite.org/2024/sqlite-autoconf-3450200.tar.gz \
+    && tar xvfz sqlite-autoconf-3450200.tar.gz \
+    && cd sqlite-autoconf-3450200 \
+    && ./configure --prefix=/usr --disable-static --enable-fts5 \
+    && make \
+    && make install \
+    && cd .. \
+    && rm -rf sqlite-autoconf-3450200 sqlite-autoconf-3450200.tar.gz
+
+# Confirm SQLite version
+RUN sqlite3 --version
 
 # Updated to install requirements using pip directly without bind mount,
 # as the requirements.txt should be copied into the image in the next steps.
