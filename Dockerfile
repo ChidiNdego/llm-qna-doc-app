@@ -6,7 +6,7 @@
 
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
 
-ARG PYTHON_VERSION=3.9.6
+ARG PYTHON_VERSION=3.11
 FROM python:${PYTHON_VERSION}-slim as base
 
 # Prevents Python from writing pyc files.
@@ -52,13 +52,20 @@ RUN wget https://www.sqlite.org/2024/sqlite-autoconf-3450200.tar.gz \
     && rm -rf sqlite-autoconf-3450200 sqlite-autoconf-3450200.tar.gz
 
 # Confirm SQLite version
-RUN sqlite3 --version
+# RUN sqlite3 --version
+
+# Check Python version
+# RUN python --version && echo "The above is the Python version installed" && sleep 20
 
 # Updated to install requirements using pip directly without bind mount,
 # as the requirements.txt should be copied into the image in the next steps.
 # This change assumes requirements.txt is part of the context being sent to Docker daemon.
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Trick ChromaDB into using pysqlite3 by creating a dummy google.colab package
+RUN mkdir -p /usr/local/lib/python3.11/site-packages/google/colab \
+    && touch /usr/local/lib/python3.11/site-packages/google/colab/__init__.py
 
 # Switch to the non-privileged user to run the application.
 USER appuser
