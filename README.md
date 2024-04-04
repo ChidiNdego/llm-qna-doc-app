@@ -35,9 +35,28 @@ streamlit run app.py
 4. Set the chunk size and number of responses, *k* (Optional).
 5. Ask questions based on the document content in the provided text input field.
 
-![Sample Payload Output](./images/sample_output.png)
+![Local Deployment](./images/local_deployment.png)
+
+![Conversational Memory](./images/conversational_memory.png)
 
 ## Deployment
+This LLM Question-Answering application is deployed using Heroku and Docker, ensuring a seamless delivery from development to production. The deployment process involves containerizing the Streamlit app with Docker, pushing the Docker image to Heroku Container Registry, and then releasing the image on a Heroku dyno. This approach guarantees the app's compatibility across different environments and simplifies updates and scalability.
 
-## Contact
+To see the web app in action, visit [LLM QA App](https://doc-qna-4e2f3304de87.herokuapp.com/).
+
+![Web App Frontend Snapshot](./images/web_app.png)
+
+### Opportunities for Improvement
+The project is open for contributions and further enhancements. Future directions could include:
+
+- **Performance Optimization:** Refining the embedding generation and retrieval process to enhance response times.
+- **Feature Expansion:** Introducing support for more file formats and richer user interactions.
+- **Scalability:** Implementing advanced caching mechanisms and optimizing resource utilization for scalability.
+- **User Experience:** Further improving the UI/UX design for an even more intuitive and engaging user experience.
+
+Your feedback and contributions are welcome! Feel free to fork this project or reach out through the contacts provided below.
+
+## Contacts
 - [LinkedIn](https://www.linkedin.com/in/chidindego)
+- [Email](mailto:chidindego@gmail.com)
+- [Twitter](https://twitter.com/SoyChidi)
