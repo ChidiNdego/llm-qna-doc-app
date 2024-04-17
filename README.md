@@ -51,6 +51,7 @@ The project is open for contributions and further enhancements. Future direction
 
 - **Performance Optimization:** Refining the embedding generation and retrieval process to enhance response times.
 - **Feature Expansion:** Introducing support for more file formats and richer user interactions.
+- **Advanced Logical Retrieval:** Ability to capture intricate relationships between different pieces of information that may be present in large corpus of text.
 - **Scalability:** Implementing advanced caching mechanisms and optimizing resource utilization for scalability.
 - **User Experience:** Further improving the UI/UX design for an even more intuitive and engaging user experience.
 
